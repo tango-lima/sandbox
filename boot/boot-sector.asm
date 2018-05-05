@@ -11,6 +11,7 @@ BITS 16
   ; Initialize stack pointer
   mov sp, 0x7c00
   
+  ; Print booting message
   mov si, booting_stage_1
   call print_str
   
