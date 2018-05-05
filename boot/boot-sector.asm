@@ -14,7 +14,7 @@ ORG 0x7C00
   mov sp, 0x7c00
   
   ; Print boot message
-  mov si, booting_stage_1
+  mov si, booting_stage_one
   call print_str
   
   ; Loop forever
@@ -40,8 +40,8 @@ ORG 0x7C00
     ret
     
   ; Strings
-  booting_stage_1:
-    db "Booting stage 1 ...", 0xD, 0xA, 0x0
+  booting_stage_one:
+    db "Booting stage one...", 0xD, 0xA, 0x0
   
   ; Padding
   times 510-($-$$) db 0x0
