@@ -11,7 +11,7 @@ ORG 0x7C00
   mov ss, ax
   
   ; Initialize stack pointer
-  mov sp, 0x7c00
+  mov sp, 0x7C00
   
   ; Print boot message
   mov si, booting_stage_one
