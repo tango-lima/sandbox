@@ -76,7 +76,7 @@ ORG 0x7C00
   no_int13h_extensions_str:
     db "Error: No support for int13h extensions!", 0xD, 0xA, 0x0
   second_stage_load_failed_str:
-    db "Error: Failed to load second stage of bootloader!", 0xD, 0xA, 0x0
+    db "Error: Failed to load second stage!", 0xD, 0xA, 0x0
 
   ; Disk access packet
   dap:
