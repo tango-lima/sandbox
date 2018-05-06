@@ -2,8 +2,8 @@ BITS 16
 
 ORG 0x7C00
   
-  ; Zero segment registers
-  xor ax, ax
+  ; Initialize segment registers
+  mov ax, 0x0000
   mov ds, ax
   mov es, ax
   mov fs, ax
