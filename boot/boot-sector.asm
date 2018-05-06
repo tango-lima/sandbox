@@ -32,7 +32,7 @@ ORG 0x7C00
   jc second_stage_load_failed
 
   ; Jump to second stage
-  jmp 0x1000:0x0000
+  jmp dap_buffer_seg:dap_buffer_ptr
 
   ; Loop forever
   spin:
