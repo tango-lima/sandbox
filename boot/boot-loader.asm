@@ -13,7 +13,7 @@ ORG 0x0000
   mov ss, ax
   
   ; Initialize stack pointer
-  mov sp, 0x0000
+  mov sp, 0x8000
   
   ; Print boot message
   mov si, booting_stage_two
