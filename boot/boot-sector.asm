@@ -40,6 +40,7 @@ ORG 0x7C00
   
   ; Print string
   print_str:
+    push al
     cld
   print_str_loop:
     lodsb
@@ -48,12 +49,15 @@ ORG 0x7C00
     call print_char
     jmp print_str_loop
   print_str_done:
+    pop al
     ret
   
   ; Print character
   print_char:
+    push ah
     mov ah, 0x0E
     int 0x10
+    pop ah
     ret
     
   no_int13h_extensions:
@@ -77,7 +81,7 @@ ORG 0x7C00
   ; Disk access packet
   dap:
     dw 0x0010
-  dap_blocks:
+  dap_read_blocks:
     dw 0x0080
   dap_buffer_ptr:
     dw 0x0000
