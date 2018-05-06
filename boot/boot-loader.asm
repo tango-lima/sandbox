@@ -8,6 +8,8 @@ ORG 0x0000
   mov es, ax
   mov fs, ax
   mov gs, ax
+  
+  mov ax, 0x2000
   mov ss, ax
   
   ; Initialize stack pointer
