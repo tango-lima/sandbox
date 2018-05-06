@@ -14,9 +14,26 @@ ORG 0x7C00
   mov sp, 0x7C00
   
   ; Print boot message
-  mov si, booting_stage_one
+  mov si, booting_stage_one_str
   call print_str
+
+  ; Check if BIOS LBA extension is present
+  mov bx, 0x55AA
+  mov ah, 0x41
+  ; Register dl contains boot drive number
+  int 0x13
+  jc no_int13h_extensions
   
+  ; Load second stage from disk
+  mov si, dap
+  mov ah, 0x42
+  ; Register dl contains boot drive number
+  int 0x13
+  jc second_stage_load_failed
+
+  ; Jump to second stage
+  jmp 0x1000:0x0000
+
   ; Loop forever
   spin:
     jmp spin
@@ -39,9 +56,35 @@ ORG 0x7C00
     int 0x10
     ret
     
+  no_int13h_extensions:
+    mov si, no_int13h_extensions_str
+    call print_str
+    jmp spin
+
+  second_stage_load_failed:
+    mov si, second_stage_load_failed_str
+    call print_str
+    jmp spin
+  
   ; Strings
-  booting_stage_one:
+  booting_stage_one_str:
     db "Booting stage one...", 0xD, 0xA, 0x0
+  no_int13h_extensions_str:
+    db "Error: No support for int13h extensions!", 0xD, 0xA, 0x0
+  second_stage_load_failed_str:
+    db "Error: Failed to load second stage of bootloader!", 0xD, 0xA, 0x0
+
+  ; Disk access packet
+  dap:
+    dw 0x0010
+  dap_blocks:
+    dw 0x0080
+  dap_buffer_ptr:
+    dw 0x0000
+  dap_buffer_seg:
+    dw 0x1000
+  dap_start_lba:
+    dq 0x00000800
   
   ; Padding
   times 510-($-$$) db 0x0
