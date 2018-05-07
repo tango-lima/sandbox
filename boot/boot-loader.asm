@@ -20,7 +20,7 @@ ORG 0x0000
   call print_str
   
   ; Save boot drive
-  mov boot_drive, 
+  mov boot_drive, dl
   
   ; Loop forever
   spin:
