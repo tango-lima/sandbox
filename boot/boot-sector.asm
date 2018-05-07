@@ -78,7 +78,10 @@ ORG 0x7C00
   second_stage_load_failed_str:
     db "Error: Failed to load second stage!", 0xD, 0xA, 0x0
 
-  ; Disk access packet
+  ; Padding
+  times 430-($-$$)  0x0
+
+  ; Disk address packet
   dap:
     dw 0x0010
   dap_read_blocks:
