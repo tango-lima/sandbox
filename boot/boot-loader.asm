@@ -19,6 +19,9 @@ ORG 0x0000
   mov si, booting_stage_two
   call print_str
   
+  ; Save boot drive
+  mov boot_drive, 
+  
   ; Loop forever
   spin:
     jmp spin
@@ -44,4 +47,9 @@ ORG 0x0000
   ; Strings
   booting_stage_two:
     db "Booting stage two...", 0xD, 0xA, 0x0
+    
+  ; Variables
+  boot_drive:
+    db 0x0
+    
   
