@@ -79,7 +79,7 @@ ORG 0x7C00
     db "Error: Failed to load second stage!", 0xD, 0xA, 0x0
 
   ; Padding
-  times 430-($-$$)  0x0
+  times 430-($-$$) db 0x0
 
   ; Disk address packet
   dap:
