@@ -3,13 +3,13 @@ BITS 16
 ORG 0x0000
 
   ; Initialize segment registers
-  mov ax, 0x1000
+  mov ax, cs
   mov ds, ax
   mov es, ax
   mov fs, ax
   mov gs, ax
   
-  mov ax, 0x2000
+  add ax, ax, 0x1000
   mov ss, ax
   
   ; Initialize stack pointer
