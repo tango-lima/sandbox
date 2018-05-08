@@ -8,12 +8,10 @@ ORG 0x0000
   mov es, ax
   mov fs, ax
   mov gs, ax
-  
-  add ax, ax, 0x1000
   mov ss, ax
   
   ; Initialize stack pointer
-  mov sp, 0x8000
+  mov sp, 0xF000
   
   ; Print boot message
   mov si, booting_stage_two
@@ -52,4 +50,11 @@ ORG 0x0000
   boot_drive:
     db 0x0
     
+  ; Padding
+  times 65536-16-($-$$) db 0x0
   
+  ; Configuration
+  kernel_lba_start:
+    dq 0x1000
+  kernel_lba_length:
+    dq 0x1000
