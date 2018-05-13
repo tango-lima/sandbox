@@ -14,7 +14,7 @@ ORG 0x0000
   mov sp, stack_top
   
   ; Print boot message
-  mov si, booting_stage_two
+  mov si, booting_stage_two_str
   call print_str
   
   ; Save boot drive
@@ -43,7 +43,7 @@ ORG 0x0000
     ret
     
   ; Strings
-  booting_stage_two:
+  booting_stage_two_str:
     db "Booting stage two...", 0xD, 0xA, 0x0
     
   ; Variables
