@@ -49,9 +49,17 @@ ORG 0x0000
   ; Variables
   boot_drive:
     db 0x0
-    
+  
   ; Padding
-  times 65536-16-($-$$) db 0x0
+  times 65536-8192 db 0x0
+  
+  ; Stack
+  stack_low:
+    times 4096 db 0x0
+  stack_top:
+  
+  ; Padding
+  times 4096-16-($-$$) db 0x0
   
   ; Configuration
   kernel_lba_start:
