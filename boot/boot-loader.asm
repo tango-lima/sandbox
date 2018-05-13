@@ -51,7 +51,7 @@ ORG 0x0000
     db 0x0
   
   ; Padding
-  times 65536-8192 db 0x0
+  times 65536-8192-($-$$) db 0x0
   
   ; Stack
   stack_low:
