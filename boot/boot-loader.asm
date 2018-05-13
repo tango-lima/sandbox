@@ -11,7 +11,7 @@ ORG 0x0000
   mov ss, ax
   
   ; Initialize stack pointer
-  mov sp, 0xF000
+  mov sp, stack_top
   
   ; Print boot message
   mov si, booting_stage_two
