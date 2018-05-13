@@ -59,7 +59,7 @@ ORG 0x0000
   stack_top:
   
   ; Padding
-  times 4096-16-($-$$) db 0x0
+  times 4096-16 db 0x0
   
   ; Configuration
   kernel_lba_start:
